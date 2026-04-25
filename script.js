@@ -7,7 +7,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   initLoadingScreen();
-  initScrollReveal();
   initParallax();
   initCardShineEffect();
 });
@@ -19,17 +18,20 @@ function initLoadingScreen() {
   const loadingScreen = document.getElementById("loading-screen");
   const progressBar = document.querySelector(".loading-progress-bar");
 
-  if (!loadingScreen) return;
+  if (!loadingScreen) {
+    // Если экрана загрузки нет — сразу запускаем анимации
+    initHeroAnimations();
+    return;
+  }
 
   // Запрещаем скролл пока идёт загрузка
   document.body.style.overflow = "hidden";
 
   // Длительность загрузки: 1000 мс
   const totalDuration = 1000;
-  // Частота обновления прогресс-бара: каждые 50 мс
   const intervalTime = 50;
-  const steps = totalDuration / intervalTime; // 20 шагов
-  const increment = 100 / steps; // по 5% за шаг
+  const steps = totalDuration / intervalTime;
+  const increment = 100 / steps;
 
   let progress = 0;
 
@@ -42,7 +44,6 @@ function initLoadingScreen() {
       if (progressBar) {
         progressBar.style.width = "100%";
       }
-      // Плавно скрываем
       hideLoadingScreen(loadingScreen);
     }
 
@@ -51,8 +52,12 @@ function initLoadingScreen() {
     }
   }, intervalTime);
 }
+
 function hideLoadingScreen(loadingScreen) {
   loadingScreen.classList.add("fade-out");
+
+  // Запускаем анимации героя сразу после начала скрытия
+  initHeroAnimations();
 
   // Разрешаем скролл после анимации
   setTimeout(() => {
@@ -68,26 +73,20 @@ function hideLoadingScreen(loadingScreen) {
 }
 
 /* ==========================================
-     SCROLL REVEAL
+     HERO ANIMATIONS — запускаются после загрузки
      ========================================== */
-function initScrollReveal() {
-  const reveals = document.querySelectorAll(".reveal-on-scroll");
+function initHeroAnimations() {
+  // Находим все элементы с анимациями
+  const animatedElements = document.querySelectorAll(
+    ".animate-fade-in, .animate-slide-up, .animate-scale-in"
+  );
 
-  function handleScrollReveal() {
-    const windowHeight = window.innerHeight;
-    const elementVisible = 150;
-
-    reveals.forEach((element) => {
-      const elementTop = element.getBoundingClientRect().top;
-
-      if (elementTop < windowHeight - elementVisible) {
-        element.classList.add("revealed");
-      }
-    });
-  }
-
-  handleScrollReveal();
-  window.addEventListener("scroll", handleScrollReveal);
+  // Сбрасываем анимацию (на случай если уже применилась)
+  animatedElements.forEach((el) => {
+    el.style.animation = "none";
+    el.offsetHeight; // форсируем reflow
+    el.style.animation = "";
+  });
 }
 
 /* ==========================================
