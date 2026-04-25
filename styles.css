@@ -74,8 +74,8 @@ body {
 }
 
 /* ============================================
-      ДЕКОРАТИВНЫЙ ФОНОВЫЙ ОРНАМЕНТ
-      ============================================ */
+         ДЕКОРАТИВНЫЙ ФОНОВЫЙ ОРНАМЕНТ
+         ============================================ */
 .bg-ornament {
   position: fixed;
   top: -300px;
@@ -114,8 +114,8 @@ body {
 }
 
 /* ============================================
-      АНИМАЦИИ
-      ============================================ */
+         АНИМАЦИИ
+         ============================================ */
 
 /* Анимация появления */
 @keyframes fadeInUp {
@@ -233,12 +233,11 @@ body {
   animation-delay: 0.6s;
 }
 
-/* Анимация при скролле */
+/* Анимация при скролле — мягкое появление */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.8s var(--transition-smooth),
-    transform 0.8s var(--transition-smooth);
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .reveal-on-scroll.revealed {
@@ -246,29 +245,28 @@ body {
   transform: translateY(0);
 }
 
-/* Задержки для reveal */
+/* Задержки для reveal — последовательное появление */
 .product-card:nth-child(1) {
-  transition-delay: 0.1s;
+  transition-delay: 0.15s;
 }
 .product-card:nth-child(2) {
-  transition-delay: 0.2s;
+  transition-delay: 0.3s;
 }
 .product-card:nth-child(3) {
-  transition-delay: 0.3s;
+  transition-delay: 0.45s;
 }
 .media-card:nth-child(1) {
-  transition-delay: 0.1s;
+  transition-delay: 0.15s;
 }
 .media-card:nth-child(2) {
-  transition-delay: 0.2s;
-}
-.media-card:nth-child(3) {
   transition-delay: 0.3s;
 }
-
+.media-card:nth-child(3) {
+  transition-delay: 0.45s;
+}
 /* ============================================
-      HEADER
-      ============================================ */
+         HEADER
+         ============================================ */
 .header {
   display: flex;
   justify-content: space-between;
@@ -347,8 +345,8 @@ body {
 }
 
 /* ============================================
-      HERO
-      ============================================ */
+         HERO
+         ============================================ */
 .hero {
   text-align: center;
   margin-bottom: 120px;
@@ -393,8 +391,8 @@ body {
 }
 
 /* ============================================
-      СЕКЦИИ
-      ============================================ */
+         СЕКЦИИ
+         ============================================ */
 .section {
   margin-bottom: 140px;
 }
@@ -421,8 +419,8 @@ body {
 }
 
 /* ============================================
-      КАРТОЧКИ ПРОДУКТОВ
-      ============================================ */
+         КАРТОЧКИ ПРОДУКТОВ
+         ============================================ */
 .products-grid {
   display: flex;
   flex-direction: column;
@@ -597,8 +595,8 @@ body {
 }
 
 /* ============================================
-      ИКОНКИ ПРИЛОЖЕНИЙ (ИЗОБРАЖЕНИЯ)
-      ============================================ */
+         ИКОНКИ ПРИЛОЖЕНИЙ (ИЗОБРАЖЕНИЯ)
+         ============================================ */
 .product-icon-img {
   width: 64px;
   height: 64px;
@@ -618,8 +616,8 @@ body {
 }
 
 /* ============================================
-      МЕДИА-КАРТОЧКИ
-      ============================================ */
+         МЕДИА-КАРТОЧКИ
+         ============================================ */
 .media-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -724,8 +722,8 @@ body {
 }
 
 /* ============================================
-      FOOTER
-      ============================================ */
+         FOOTER
+         ============================================ */
 .footer {
   border-top: 1px solid var(--border-color);
   padding: 36px 0;
@@ -746,8 +744,8 @@ body {
 }
 
 /* ============================================
-      АДАПТИВНОСТЬ
-      ============================================ */
+         АДАПТИВНОСТЬ
+         ============================================ */
 @media (max-width: 1024px) {
   .hero h1 {
     font-size: 2.8rem;
@@ -846,5 +844,99 @@ body {
     flex-direction: column;
     gap: 12px;
     text-align: center;
+  }
+}
+/* ============================================
+      LOADING SCREEN
+      ============================================ */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease-out;
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  text-align: center;
+}
+
+.loading-logo {
+  height: 100px;
+  width: auto;
+  animation: loadingLogoFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+}
+
+.loading-text {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  animation: loadingTextPulse 2s ease-in-out infinite;
+}
+
+/* Полоса прогресса */
+.loading-progress {
+  width: 200px;
+  height: 2px;
+  background: rgba(212, 175, 55, 0.15);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--gold-gradient);
+  border-radius: 1px;
+  transition: width 0.2s ease-out;
+}
+
+/* Анимация плавающего логотипа */
+@keyframes loadingLogoFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+  }
+  25% {
+    transform: translateY(-8px) scale(1.04);
+    filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.6));
+  }
+  50% {
+    transform: translateY(-4px) scale(1.02);
+    filter: drop-shadow(0 0 32px rgba(191, 149, 63, 0.5));
+  }
+  75% {
+    transform: translateY(-6px) scale(1.03);
+    filter: drop-shadow(0 0 24px rgba(212, 175, 55, 0.7));
+  }
+}
+
+/* Анимация пульсации текста */
+@keyframes loadingTextPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
   }
 }

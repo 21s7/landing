@@ -1,13 +1,75 @@
+/**
+ * ============================================
+ * SCRIPT.JS — Анимации и интерактивность
+ * для лендинга Sarigma
+ * ============================================
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
+  initLoadingScreen();
   initScrollReveal();
   initParallax();
   initCardShineEffect();
 });
 
-/**
- * Анимация появления элементов при скролле
- * Добавляет класс .revealed когда элемент попадает в область видимости
- */
+/* ==========================================
+     LOADING SCREEN
+     ========================================== */
+function initLoadingScreen() {
+  const loadingScreen = document.getElementById("loading-screen");
+  const progressBar = document.querySelector(".loading-progress-bar");
+
+  if (!loadingScreen) return;
+
+  // Запрещаем скролл пока идёт загрузка
+  document.body.style.overflow = "hidden";
+
+  // Длительность загрузки: 1000 мс
+  const totalDuration = 1000;
+  // Частота обновления прогресс-бара: каждые 50 мс
+  const intervalTime = 50;
+  const steps = totalDuration / intervalTime; // 20 шагов
+  const increment = 100 / steps; // по 5% за шаг
+
+  let progress = 0;
+
+  const progressInterval = setInterval(() => {
+    progress += increment;
+
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(progressInterval);
+      if (progressBar) {
+        progressBar.style.width = "100%";
+      }
+      // Плавно скрываем
+      hideLoadingScreen(loadingScreen);
+    }
+
+    if (progressBar) {
+      progressBar.style.width = `${progress}%`;
+    }
+  }, intervalTime);
+}
+function hideLoadingScreen(loadingScreen) {
+  loadingScreen.classList.add("fade-out");
+
+  // Разрешаем скролл после анимации
+  setTimeout(() => {
+    document.body.style.overflow = "";
+  }, 500);
+
+  // Удаляем элемент из DOM после завершения анимации
+  setTimeout(() => {
+    if (loadingScreen && loadingScreen.parentNode) {
+      loadingScreen.parentNode.removeChild(loadingScreen);
+    }
+  }, 800);
+}
+
+/* ==========================================
+     SCROLL REVEAL
+     ========================================== */
 function initScrollReveal() {
   const reveals = document.querySelectorAll(".reveal-on-scroll");
 
@@ -24,17 +86,13 @@ function initScrollReveal() {
     });
   }
 
-  // Проверка при загрузке
   handleScrollReveal();
-
-  // Проверка при скролле
   window.addEventListener("scroll", handleScrollReveal);
 }
 
-/**
- * Параллакс-эффект для фонового декоративного элемента
- * Создаёт лёгкое смещение при прокрутке страницы
- */
+/* ==========================================
+     PARALLAX
+     ========================================== */
 function initParallax() {
   const ornament = document.querySelector(".bg-ornament");
 
@@ -47,17 +105,13 @@ function initParallax() {
     }deg)`;
   }
 
-  // Проверка при загрузке
   handleParallax();
-
-  // Проверка при скролле
   window.addEventListener("scroll", handleParallax);
 }
 
-/**
- * Эффект свечения на карточках при движении курсора
- * Создаёт радиальный градиент, следующий за мышью
- */
+/* ==========================================
+     CARD SHINE EFFECT
+     ========================================== */
 function initCardShineEffect() {
   const cards = document.querySelectorAll(".product-card, .media-card");
 
