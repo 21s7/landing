@@ -1,10 +1,3 @@
-/**
- * ============================================
- * SCRIPT.JS — Анимации и интерактивность
- * для лендинга Юрий Захваткин
- * ============================================
- */
-
 document.addEventListener("DOMContentLoaded", function () {
   initScrollReveal();
   initParallax();

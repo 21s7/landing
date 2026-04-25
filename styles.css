@@ -23,6 +23,15 @@
   --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6b5, #b38728, #fbf5b7);
   --border-color: rgba(191, 149, 63, 0.2);
   --border-hover: rgba(191, 149, 63, 0.5);
+
+  /* Цвета для обводок карточек */
+  --color-silver: #c0c0c0;
+  --color-silver-glow: rgba(192, 192, 192, 0.5);
+  --color-blue-purple: #7b68ee;
+  --color-blue-purple-glow: rgba(123, 104, 238, 0.5);
+  --color-dark-green: #2e8b57;
+  --color-dark-green-glow: rgba(46, 139, 87, 0.5);
+
   --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -188,6 +197,19 @@ body {
   }
 }
 
+/* Лаконичная анимация логотипа */
+@keyframes logoGentleFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.3));
+  }
+  50% {
+    transform: translateY(-3px) scale(1.03);
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+  }
+}
+
 /* Классы для анимаций */
 .animate-fade-in {
   animation: fadeIn 1s var(--transition-smooth) both;
@@ -258,6 +280,9 @@ body {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: 2px;
@@ -269,6 +294,19 @@ body {
 
 .logo:hover {
   color: #fff;
+}
+
+/* Анимированный логотип */
+.logo-img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  animation: logoGentleFloat 4s ease-in-out infinite;
+  transition: filter 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7));
 }
 
 .nav-links {
@@ -404,22 +442,92 @@ body {
   gap: 44px;
   transition: border-color 0.5s var(--transition-smooth),
     background 0.5s var(--transition-smooth),
-    transform 0.4s var(--transition-smooth);
+    transform 0.4s var(--transition-smooth),
+    box-shadow 0.5s var(--transition-smooth);
   overflow: hidden;
   cursor: pointer;
 }
 
-.product-card:hover {
-  border-color: var(--border-hover);
-  background: rgba(255, 255, 255, 0.03);
-  transform: translateX(4px);
+/* ---- Цветовые темы карточек ---- */
+
+/* Карточка 1: Серебристая */
+.product-card.card-silver {
+  border-color: rgba(192, 192, 192, 0.25);
 }
+
+.product-card.card-silver:hover {
+  border-color: rgba(192, 192, 192, 0.6);
+  background: rgba(192, 192, 192, 0.03);
+  transform: translateX(4px);
+  box-shadow: 0 8px 30px rgba(192, 192, 192, 0.08);
+}
+
+.product-card.card-silver .product-icon {
+  color: var(--color-silver);
+}
+
+.product-card.card-silver:hover .product-icon-img {
+  filter: drop-shadow(0 0 12px rgba(192, 192, 192, 0.5)) brightness(1.1);
+}
+
+.product-card.card-silver .product-arrow {
+  color: var(--color-silver);
+}
+
+/* Карточка 2: Сине-фиолетовая */
+.product-card.card-blue-purple {
+  border-color: rgba(123, 104, 238, 0.25);
+}
+
+.product-card.card-blue-purple:hover {
+  border-color: rgba(123, 104, 238, 0.6);
+  background: rgba(123, 104, 238, 0.03);
+  transform: translateX(4px);
+  box-shadow: 0 8px 30px rgba(123, 104, 238, 0.1);
+}
+
+.product-card.card-blue-purple .product-icon {
+  color: var(--color-blue-purple);
+}
+
+.product-card.card-blue-purple:hover .product-icon-img {
+  filter: drop-shadow(0 0 14px rgba(123, 104, 238, 0.5)) brightness(1.1);
+}
+
+.product-card.card-blue-purple .product-arrow {
+  color: var(--color-blue-purple);
+}
+
+/* Карточка 3: Тёмно-зелёная */
+.product-card.card-dark-green {
+  border-color: rgba(46, 139, 87, 0.25);
+}
+
+.product-card.card-dark-green:hover {
+  border-color: rgba(46, 139, 87, 0.6);
+  background: rgba(46, 139, 87, 0.03);
+  transform: translateX(4px);
+  box-shadow: 0 8px 30px rgba(46, 139, 87, 0.08);
+}
+
+.product-card.card-dark-green .product-icon {
+  color: var(--color-dark-green);
+}
+
+.product-card.card-dark-green:hover .product-icon-img {
+  filter: drop-shadow(0 0 12px rgba(46, 139, 87, 0.5)) brightness(1.1);
+}
+
+.product-card.card-dark-green .product-arrow {
+  color: var(--color-dark-green);
+}
+
+/* ---- Общие стили карточки ---- */
 
 .product-icon {
   font-size: 2.6rem;
   min-width: 64px;
   text-align: center;
-  color: var(--gold-base);
   transition: transform 0.4s var(--transition-smooth);
   position: relative;
   z-index: 1;
@@ -455,7 +563,6 @@ body {
 
 .product-arrow {
   margin-left: auto;
-  color: var(--gold-base);
   transition: all 0.4s var(--transition-smooth);
   position: relative;
   z-index: 1;
@@ -475,7 +582,7 @@ body {
   height: 100%;
   background: radial-gradient(
     400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(191, 149, 63, 0.06),
+    rgba(255, 255, 255, 0.04),
     transparent 40%
   );
   opacity: 0;
@@ -487,6 +594,27 @@ body {
 .product-card:hover .card-shine,
 .media-card:hover .card-shine {
   opacity: 1;
+}
+
+/* ============================================
+      ИКОНКИ ПРИЛОЖЕНИЙ (ИЗОБРАЖЕНИЯ)
+      ============================================ */
+.product-icon-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.4s var(--transition-smooth),
+    filter 0.4s var(--transition-smooth);
+}
+
+.product-card:hover .product-icon-img {
+  transform: scale(1.1);
+}
+
+/* Убираем старый стиль для эмодзи-иконок */
+.product-icon .icon-placeholder {
+  display: none;
 }
 
 /* ============================================
@@ -507,7 +635,8 @@ body {
   border-radius: 2px;
   transition: border-color 0.4s var(--transition-smooth),
     background 0.4s var(--transition-smooth),
-    transform 0.4s var(--transition-smooth);
+    transform 0.4s var(--transition-smooth),
+    box-shadow 0.4s var(--transition-smooth);
   text-decoration: none;
   color: #ccc;
   display: flex;
@@ -543,9 +672,23 @@ body {
   height: 28px;
 }
 
+/* Иконки соцсетей — img */
+.media-icon-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  transition: transform 0.4s var(--transition-smooth),
+    filter 0.4s var(--transition-smooth);
+}
+
 .media-card:hover .media-icon {
   transform: scale(1.15);
   color: var(--gold-light);
+}
+
+.media-card:hover .media-icon-img {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
 }
 
 .media-card h4 {
@@ -671,6 +814,15 @@ body {
     top: -100px;
     right: -100px;
   }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .logo-img {
+    width: 34px;
+    height: 34px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -695,26 +847,4 @@ body {
     gap: 12px;
     text-align: center;
   }
-}
-
-/* ============================================
-   ИКОНКИ ПРИЛОЖЕНИЙ (ИЗОБРАЖЕНИЯ)
-   ============================================ */
-.product-icon-img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  display: block;
-  transition: transform 0.4s var(--transition-smooth);
-  filter: brightness(0.9);
-}
-
-.product-card:hover .product-icon-img {
-  transform: scale(1.1);
-  filter: brightness(1.1);
-}
-
-/* Убираем старый стиль для эмодзи-иконок */
-.product-icon .icon-placeholder {
-  display: none;
 }
