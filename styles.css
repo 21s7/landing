@@ -696,3 +696,25 @@ body {
     text-align: center;
   }
 }
+
+/* ============================================
+   ИКОНКИ ПРИЛОЖЕНИЙ (ИЗОБРАЖЕНИЯ)
+   ============================================ */
+.product-icon-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.4s var(--transition-smooth);
+  filter: brightness(0.9);
+}
+
+.product-card:hover .product-icon-img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Убираем старый стиль для эмодзи-иконок */
+.product-icon .icon-placeholder {
+  display: none;
+}

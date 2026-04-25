@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
+    <link rel="icon" href="img/favicon.png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ваш Бренд — Экосистема продуктов</title>
+    <title>Sarigma</title>
 
     <!-- Подключение шрифта Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -23,7 +24,9 @@
     <div class="container">
       <!-- ===== Верхняя панель ===== -->
       <header class="header">
-        <a href="#" class="logo">YOUR<span class="gold-accent">BRAND</span></a>
+        <a href="#" class="logo"
+          >Sarigma<span class="gold-accent">Navigation</span></a
+        >
         <nav>
           <ul class="nav-links">
             <li><a href="#products">Приложения</a></li>
@@ -38,11 +41,9 @@
         <span class="hero-badge animate-fade-in">ДОБРО ПОЖАЛОВАТЬ</span>
         <h1 class="animate-slide-up">
           Цифровая <span class="gold-text">экосистема</span><br />
-          для вашего роста
         </h1>
         <p class="animate-slide-up animate-delay-1">
-          Строгий дизайн, продуманные решения. Мои приложения и контент
-          объединены общей философией качества.
+          Все мои проекты, приложения и ссылки
         </p>
         <!-- Декоративная линия -->
         <div class="gold-divider animate-scale-in"></div>
@@ -51,21 +52,29 @@
       <!-- ===== Секция: Продукты ===== -->
       <section id="products" class="section">
         <div class="section-header">
-          <span class="section-tag">// Продукты</span>
+          <span class="section-tag">Продукты</span>
           <h2 class="section-title">Мои приложения</h2>
         </div>
 
         <div class="products-grid">
-          <!-- Карточка 1 -->
-          <a href="#" class="product-card reveal-on-scroll" target="_blank">
+          <!-- Карточка 1: Калькулятор КБЖУ -->
+          <a
+            href="https://mp.sarigma.ru"
+            class="product-card reveal-on-scroll"
+            target="_blank"
+          >
             <div class="product-icon">
-              <span class="icon-placeholder">📱</span>
+              <img
+                src="img/PitAppLogo.png"
+                alt="Калькулятор КБЖУ"
+                class="product-icon-img"
+              />
             </div>
             <div class="product-info">
-              <h3>AppName One</h3>
+              <h3>Калькулятор КБЖУ</h3>
               <p>
-                Аналитика и трекинг привычек. Строгий минимализм для
-                максимальной продуктивности.
+                Точный расчёт калорий, белков, жиров и углеводов для контроля
+                питания и достижения целей.
               </p>
             </div>
             <div class="product-arrow">
@@ -86,16 +95,24 @@
             <div class="card-shine"></div>
           </a>
 
-          <!-- Карточка 2 -->
-          <a href="#" class="product-card reveal-on-scroll" target="_blank">
+          <!-- Карточка 2: Инвестиционные портфели -->
+          <a
+            href="https://pb.sarigma.ru"
+            class="product-card reveal-on-scroll"
+            target="_blank"
+          >
             <div class="product-icon">
-              <span class="icon-placeholder">⚙️</span>
+              <img
+                src="img/FinAppLogo.png"
+                alt="Инвестиционные портфели"
+                class="product-icon-img"
+              />
             </div>
             <div class="product-info">
-              <h3>Utility Tool Pro</h3>
+              <h3>Комбинирование и аналитика инвестиционных портфелей</h3>
               <p>
-                Набор профессиональных утилит для тех, кто ценит время и
-                безупречный интерфейс.
+                Составление, оптимизация и глубокий анализ инвестиционного
+                портфеля.
               </p>
             </div>
             <div class="product-arrow">
@@ -116,15 +133,24 @@
             <div class="card-shine"></div>
           </a>
 
-          <!-- Карточка 3 -->
-          <a href="#" class="product-card reveal-on-scroll" target="_blank">
+          <!-- Карточка 3: Тайм-менеджмент -->
+          <a
+            href="https://dm.sarigma.ru"
+            class="product-card reveal-on-scroll"
+            target="_blank"
+          >
             <div class="product-icon">
-              <span class="icon-placeholder">📊</span>
+              <img
+                src="img/deepAppLogo.png"
+                alt="Тайм-менеджмент"
+                class="product-icon-img"
+              />
             </div>
             <div class="product-info">
-              <h3>Finance Flow</h3>
+              <h3>Приложение по тайм-менеджменту</h3>
               <p>
-                Управление капиталом в черно-золотых тонах. Четкость и контроль.
+                Глубокий анализ времени, продуктивность и эффективное
+                планирование задач.
               </p>
             </div>
             <div class="product-arrow">
@@ -150,7 +176,7 @@
       <!-- ===== Секция: Социальные сети ===== -->
       <section id="media" class="section">
         <div class="section-header">
-          <span class="section-tag">// Контент и связь</span>
+          <span class="section-tag">Контент и связь</span>
           <h2 class="section-title">Мои платформы</h2>
         </div>
 
@@ -241,65 +267,12 @@
 
       <!-- ===== Футер ===== -->
       <footer id="contact" class="footer">
-        <span class="footer-text"
-          >© 2025 YourBrand. Строгость в каждой детали.</span
-        >
-        <span class="gold-text">Limited Edition</span>
+        <span class="footer-text">Copyright © 2026 created by yurizakhv</span>
+        <span class="gold-text">Sarigma</span>
       </footer>
     </div>
 
-    <!-- Скрипт для анимаций при скролле -->
-    <script>
-      // Функция для проверки видимости элементов
-      function handleScrollReveal() {
-        const reveals = document.querySelectorAll(".reveal-on-scroll");
-
-        reveals.forEach((element) => {
-          const windowHeight = window.innerHeight;
-          const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = 150;
-
-          if (elementTop < windowHeight - elementVisible) {
-            element.classList.add("revealed");
-          }
-        });
-      }
-
-      // Параллакс-эффект для фонового орнамента
-      function handleParallax() {
-        const ornament = document.querySelector(".bg-ornament");
-        if (ornament) {
-          const scrolled = window.pageYOffset;
-          ornament.style.transform = `translateY(${scrolled * 0.05}px) rotate(${
-            scrolled * 0.02
-          }deg)`;
-        }
-      }
-
-      // Запуск при загрузке и скролле
-      window.addEventListener("scroll", () => {
-        handleScrollReveal();
-        handleParallax();
-      });
-
-      window.addEventListener("load", () => {
-        handleScrollReveal();
-        handleParallax();
-      });
-
-      // Эффект свечения курсора для карточек
-      document
-        .querySelectorAll(".product-card, .media-card")
-        .forEach((card) => {
-          card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            card.style.setProperty("--mouse-x", `${x}px`);
-            card.style.setProperty("--mouse-y", `${y}px`);
-          });
-        });
-    </script>
+    <!-- Подключение скриптов -->
+    <script src="script.js"></script>
   </body>
 </html>
