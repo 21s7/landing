@@ -1,0 +1,698 @@
+/* ============================================
+   RESET & БАЗОВЫЕ НАСТРОЙКИ
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #0d0d0d;
+  --bg-card: rgba(255, 255, 255, 0.015);
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666;
+  --gold-light: #fcf6b5;
+  --gold-base: #d4af37;
+  --gold-dark: #b38728;
+  --gold-darker: #8b6914;
+  --gold-gradient: linear-gradient(135deg, #bf953f, #fcf6b5, #b38728, #fbf5b7);
+  --border-color: rgba(191, 149, 63, 0.2);
+  --border-hover: rgba(191, 149, 63, 0.5);
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) var(--bg-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Кастомный скроллбар для Webkit */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: 3px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================
+      ДЕКОРАТИВНЫЙ ФОНОВЫЙ ОРНАМЕНТ
+      ============================================ */
+.bg-ornament {
+  position: fixed;
+  top: -300px;
+  right: -300px;
+  width: 800px;
+  height: 800px;
+  border: 1px solid rgba(191, 149, 63, 0.08);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: ornamentRotate 60s linear infinite;
+}
+
+.bg-ornament::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  right: 50px;
+  bottom: 50px;
+  border: 1px solid rgba(191, 149, 63, 0.04);
+  border-radius: 50%;
+}
+
+/* Золотой градиент для текста */
+.gold-text {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+.gold-accent {
+  color: var(--gold-base);
+}
+
+/* ============================================
+      АНИМАЦИИ
+      ============================================ */
+
+/* Анимация появления */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes ornamentRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes borderGlow {
+  0%,
+  100% {
+    border-color: rgba(191, 149, 63, 0.2);
+  }
+  50% {
+    border-color: rgba(191, 149, 63, 0.5);
+  }
+}
+
+@keyframes arrowPulse {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+/* Классы для анимаций */
+.animate-fade-in {
+  animation: fadeIn 1s var(--transition-smooth) both;
+}
+
+.animate-slide-up {
+  animation: fadeInUp 0.8s var(--transition-smooth) both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s var(--transition-smooth) 0.5s both;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.2s;
+}
+.animate-delay-2 {
+  animation-delay: 0.4s;
+}
+.animate-delay-3 {
+  animation-delay: 0.6s;
+}
+
+/* Анимация при скролле */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s var(--transition-smooth),
+    transform 0.8s var(--transition-smooth);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Задержки для reveal */
+.product-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.product-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.product-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.media-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.media-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.media-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* ============================================
+      HEADER
+      ============================================ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 80px;
+  animation: fadeIn 0.6s var(--transition-smooth) both;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.logo:hover {
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: color 0.3s;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-base);
+  transition: width 0.3s var(--transition-smooth);
+}
+
+.nav-links a:hover {
+  color: var(--gold-base);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+      HERO
+      ============================================ */
+.hero {
+  text-align: center;
+  margin-bottom: 120px;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--gold-base);
+  padding: 8px 20px;
+  border: 1px solid rgba(191, 149, 63, 0.3);
+  border-radius: 2px;
+  margin-bottom: 32px;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: #888;
+  max-width: 560px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold-gradient);
+  margin: 0 auto;
+}
+
+/* ============================================
+      СЕКЦИИ
+      ============================================ */
+.section {
+  margin-bottom: 140px;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-tag {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--gold-base);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+/* ============================================
+      КАРТОЧКИ ПРОДУКТОВ
+      ============================================ */
+.products-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.product-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 2px;
+  padding: 40px 44px;
+  text-decoration: none;
+  color: inherit;
+  gap: 44px;
+  transition: border-color 0.5s var(--transition-smooth),
+    background 0.5s var(--transition-smooth),
+    transform 0.4s var(--transition-smooth);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.03);
+  transform: translateX(4px);
+}
+
+.product-icon {
+  font-size: 2.6rem;
+  min-width: 64px;
+  text-align: center;
+  color: var(--gold-base);
+  transition: transform 0.4s var(--transition-smooth);
+  position: relative;
+  z-index: 1;
+}
+
+.product-card:hover .product-icon {
+  transform: scale(1.1);
+}
+
+.product-info {
+  position: relative;
+  z-index: 1;
+}
+
+.product-info h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #f5f5f5;
+  margin-bottom: 6px;
+  transition: color 0.3s;
+}
+
+.product-card:hover .product-info h3 {
+  color: #fff;
+}
+
+.product-info p {
+  color: #888;
+  font-weight: 300;
+  font-size: 0.95rem;
+  max-width: 520px;
+}
+
+.product-arrow {
+  margin-left: auto;
+  color: var(--gold-base);
+  transition: all 0.4s var(--transition-smooth);
+  position: relative;
+  z-index: 1;
+}
+
+.product-card:hover .product-arrow {
+  animation: arrowPulse 0.6s var(--transition-smooth) infinite;
+  color: #fff;
+}
+
+/* Эффект блика при наведении */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(191, 149, 63, 0.06),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.product-card:hover .card-shine,
+.media-card:hover .card-shine {
+  opacity: 1;
+}
+
+/* ============================================
+      МЕДИА-КАРТОЧКИ
+      ============================================ */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.media-card {
+  position: relative;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid var(--border-color);
+  padding: 44px 28px 36px;
+  text-align: center;
+  border-radius: 2px;
+  transition: border-color 0.4s var(--transition-smooth),
+    background 0.4s var(--transition-smooth),
+    transform 0.4s var(--transition-smooth);
+  text-decoration: none;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.media-card:hover {
+  border-color: var(--gold-base);
+  background: #111;
+  color: #fff;
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.media-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-base);
+  transition: all 0.4s var(--transition-smooth);
+  position: relative;
+  z-index: 1;
+}
+
+.media-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.media-card:hover .media-icon {
+  transform: scale(1.15);
+  color: var(--gold-light);
+}
+
+.media-card h4 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.media-card p {
+  font-size: 0.85rem;
+  color: #777;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.media-handle {
+  display: inline-block;
+  color: var(--gold-base);
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 4px;
+  transition: color 0.3s;
+  position: relative;
+  z-index: 1;
+}
+
+.media-card:hover .media-handle {
+  color: #fff;
+}
+
+/* ============================================
+      FOOTER
+      ============================================ */
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 36px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.footer-text {
+  color: #555;
+}
+
+.footer .gold-text {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+/* ============================================
+      АДАПТИВНОСТЬ
+      ============================================ */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .product-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 32px 24px;
+    gap: 18px;
+  }
+
+  .product-arrow {
+    margin-left: 0;
+    transform: rotate(90deg);
+  }
+
+  .product-card:hover .product-arrow {
+    animation: none;
+    transform: rotate(90deg) translateX(4px);
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .nav-links {
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section {
+    margin-bottom: 100px;
+  }
+
+  .hero {
+    margin-bottom: 80px;
+  }
+
+  .bg-ornament {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    right: -100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .product-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
