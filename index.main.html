@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta
+      name="description"
+      content="Sarigma (Саригма) — цифровая экосистема проектов: калькулятор КБЖУ для расчёта калорий, аналитика и комбинирование инвестиционных портфелей, приложение для тайм-менеджмента и глубокого анализа времени. Все проекты в одном месте."
+    />
+    <meta
+      name="keywords"
+      content="sarigma, саригма, yurizakhv, Юрий Захваткин, калькулятор КБЖУ, расчёт калорий, инвестиционный портфель, аналитика инвестиций, тайм-менеджмент, планирование задач, продуктивность, цифровая экосистема, приложения"
+    />
+    <meta name="author" content="yurizakhv" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sarigma.ru" />
+
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
+    <meta http-equiv="content-language" content="ru" />
+
+    <link rel="icon" href="img/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sarigma</title>
+
+    <!-- Подключение шрифта Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-content">
+        <img
+          src="img/sarigmaLogo.png"
+          alt="Sarigma Logo"
+          class="loading-logo"
+        />
+        <div class="loading-text">Загрузка...</div>
+        <div class="loading-progress">
+          <div class="loading-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Декоративный фоновый элемент -->
+    <div class="bg-ornament"></div>
+
+    <div class="container">
+      <!-- ===== Верхняя панель ===== -->
+      <header class="header">
+        <a href="#" class="logo">
+          Sarigma<span class="gold-accent">Navigation</span>
+          <img src="img/sarigmaLogo.png" alt="Sarigma Logo" class="logo-img" />
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#products">Приложения</a></li>
+            <li><a href="#media">Соцсети</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- ===== Главный экран ===== -->
+      <section class="hero">
+        <span class="hero-badge animate-fade-in">ДОБРО ПОЖАЛОВАТЬ</span>
+        <h1 class="animate-slide-up">
+          Цифровая <span class="gold-text">экосистема</span><br />
+        </h1>
+        <p class="animate-slide-up animate-delay-1">
+          Все мои проекты, приложения и ссылки
+        </p>
+        <!-- Декоративная линия -->
+        <div class="gold-divider animate-scale-in"></div>
+      </section>
+
+      <!-- ===== Секция: Продукты ===== -->
+      <section id="products" class="section">
+        <div class="section-header">
+          <span class="section-tag">Продукты</span>
+          <h2 class="section-title">Мои приложения</h2>
+        </div>
+
+        <div class="products-grid">
+          <!-- Карточка 1: Калькулятор КБЖУ (серебристая) -->
+          <a
+            href="https://mp.sarigma.ru"
+            class="product-card reveal-on-scroll card-silver"
+            target="_blank"
+          >
+            <div class="product-icon">
+              <img
+                src="img/PitAppLogo.png"
+                alt="Калькулятор КБЖУ"
+                class="product-icon-img"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Калькулятор КБЖУ</h3>
+              <p>
+                Точный расчёт калорий, белков, жиров и углеводов для контроля
+                питания и достижения целей.
+              </p>
+            </div>
+            <div class="product-arrow">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+            <div class="card-shine"></div>
+          </a>
+
+          <!-- Карточка 2: Инвестиционные портфели (сине-фиолетовая) -->
+          <a
+            href="https://pb.sarigma.ru"
+            class="product-card reveal-on-scroll card-blue-purple"
+            target="_blank"
+          >
+            <div class="product-icon">
+              <img
+                src="img/FinAppLogo.png"
+                alt="Инвестиционные портфели"
+                class="product-icon-img"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Комбинирование и аналитика инвестиционных портфелей</h3>
+              <p>
+                Составление, оптимизация и глубокий анализ инвестиционного
+                портфеля.
+              </p>
+            </div>
+            <div class="product-arrow">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+            <div class="card-shine"></div>
+          </a>
+
+          <!-- Карточка 3: Тайм-менеджмент (тёмно-зелёная) -->
+          <a
+            href="https://dm.sarigma.ru"
+            class="product-card reveal-on-scroll card-dark-green"
+            target="_blank"
+          >
+            <div class="product-icon">
+              <img
+                src="img/deepAppLogo.png"
+                alt="Тайм-менеджмент"
+                class="product-icon-img"
+              />
+            </div>
+            <div class="product-info">
+              <h3>Приложение по тайм-менеджменту</h3>
+              <p>
+                Глубокий анализ времени, продуктивность и эффективное
+                планирование задач.
+              </p>
+            </div>
+            <div class="product-arrow">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </div>
+            <div class="card-shine"></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== Секция: Социальные сети ===== -->
+      <section id="media" class="section">
+        <div class="section-header">
+          <span class="section-tag">Контент и связь</span>
+          <h2 class="section-title">Мои платформы</h2>
+        </div>
+
+        <div class="media-grid">
+          <!-- Telegram -->
+          <a
+            href="https://t.me/yurizakhv"
+            class="media-card reveal-on-scroll"
+            target="_blank"
+          >
+            <div class="media-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/telegram.svg"
+                alt="Telegram"
+                class="media-icon-img"
+              />
+            </div>
+            <h4>Telegram</h4>
+            <p>Открытый телеграмм канал</p>
+            <span class="media-handle">@yurizakhv</span>
+            <div class="card-shine"></div>
+          </a>
+
+          <!-- TikTok -->
+          <a
+            href="https://tiktok.com/@yurizakhv"
+            class="media-card reveal-on-scroll"
+            target="_blank"
+          >
+            <div class="media-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tiktok.svg"
+                alt="TikTok"
+                class="media-icon-img"
+              />
+            </div>
+            <h4>TikTok</h4>
+            <p>мой акаунт в тик токе</p>
+            <span class="media-handle">@yurizakhv</span>
+            <div class="card-shine"></div>
+          </a>
+
+          <!-- YouTube -->
+          <a
+            href="https://youtube.com/@yurizakhv"
+            class="media-card reveal-on-scroll"
+            target="_blank"
+          >
+            <div class="media-icon">
+              <img
+                src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg"
+                alt="YouTube"
+                class="media-icon-img"
+              />
+            </div>
+            <h4>YouTube</h4>
+            <p>Мои начинания из года в год</p>
+            <span class="media-handle">@yurizakhv</span>
+            <div class="card-shine"></div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===== Футер ===== -->
+      <footer id="contact" class="footer">
+        <span class="footer-text">Copyright © 2026 created by yurizakhv</span>
+        <span class="gold-text">Sarigma</span>
+      </footer>
+    </div>
+
+    <!-- Подключение скриптов -->
+    <script src="script.js"></script>
+  </body>
+</html>
